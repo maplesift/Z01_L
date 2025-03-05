@@ -3,7 +3,7 @@
 // from(從) ../modal/$table.php
 include_once "db.php";
 $table=$_POST['table'];
-// ucfirst = 第一個字大寫的函式
+// ucfirst = 第一個字大寫的方法
 $db=ucfirst($table);
 
 if(!empty($_FILES['img']['tmp_name'])){
