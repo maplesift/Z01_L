@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 class DB{
     protected $table;
     protected $pdo;
@@ -57,6 +58,8 @@ class DB{
     }
     function save($array){
         // update table set
+        
+        
         if(isset($array['id'])){
             $id=$array['id'];
             unset($array['id']);
@@ -68,6 +71,7 @@ class DB{
             $keys=array_keys($array);
             $sql = " INSERT INTO $this->table(`".join("`,`",$keys)."`) values('".join("','",$array)."')";
         }
+        echo $sql;
         return $this->pdo->exec($sql);
     }
     function count(...$array){
@@ -100,9 +104,13 @@ function to($url){
     header("location:".$url);
 }
 
+
+
+$Title=new db("title");
 $Admin=new db("admin");
 $Total=new db("total");
 $Bottom=new db("bottom");
+
 
 if(!isset($_SESSION['total'])){
     $total=$Total->find(1);

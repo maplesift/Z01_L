@@ -2,11 +2,13 @@
 // dd($_POST);
 $table=$_POST['table'];
 $db=ucfirst($table);
-unset($_POST['table']);
+
 if(!empty($_FILES['img']['tmp_name'])){
     move_uploaded_file($_FILES['img']['tmp_name'],"../upload/".$_FILES['img']['name']);
     $_POST['img']=$_FILES['img']['name'];
 }
+
+unset($_POST['table']);
 
 if(isset($_POST['pw2'])){
     unset($_POST['pw2']);
@@ -14,4 +16,4 @@ if(isset($_POST['pw2'])){
 
 $$db->save($_POST);
 
-to("../admin.php?do=$table");
+// to("../admin.php?do=$table");
