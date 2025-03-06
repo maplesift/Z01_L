@@ -46,7 +46,6 @@
         if (now >= lin.length)
             now = 0;
     }
-
     ww()
     </script>
 

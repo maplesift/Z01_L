@@ -1,30 +1,30 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-    <p class="t cent botli">網站標題管理</p>
+    <p class="t cent botli">動畫圖片管理</p>
     <form method="post" action="./api/edit.php">
         <table width="100%">
             <tbody>
                 <tr class="yel">
-                    <td width="45%">網站標題</td>
-                    <td width="23%">替代文字</td>
+                    <td width="45%">動畫圖片</td>
+                    <!-- <td width="23%">替代文字</td> -->
                     <td width="7%">顯示</td>
                     <td width="7%">刪除</td>
                     <td></td>
                 </tr>
                 <?php
-                $rows = $Title->all();
+                $rows =$Mvim->all();
                 foreach ($rows as $row) :
                 ?>
-                    <tr class="">
-                        <td width="45%"><img src="./upload/<?= $row['img']; ?>" style="width: 300px;"></td>
+                    <tr class="cent">
+                        <td width="45%"><img src="./upload/<?= $row['img']; ?>" style="width: 150px;"></td>
 
-                        <td width="23%"><input type="text" name="text[]" value="<?= $row['text']; ?>"></td>
+                        <!-- <td width="23%"><input type="text" name="text[]" value="<?= $row['text']; ?>"></td> -->
 
-                        <td width="7%"><input type="radio" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1) ? 'checked' : '' ?>></td>
+                        <td width="7%"><input type="checkbox" name="sh[]" value="<?= $row['id']; ?>" <?= ($row['sh'] == 1) ? 'checked' : '' ?>></td>
 
                         <td width="7%"><input type="checkbox" name="del[]" value="<?= $row['id']; ?>"></td>
 
                         <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
-
+                        
                         <td>
                             <input type="button" value="更換圖片"
                                 onclick="op('#cover','#cvr','./modal/update_title.php?id=<?= $row['id']; ?>&table=<?= $do; ?>')">

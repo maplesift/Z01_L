@@ -4,6 +4,7 @@
 }
 </style>
 <h2 class="cent">動態文字廣告管理</h2>
+<!-- <p class="t cent botli">動態文字廣告管理</p> -->
 <hr>
 <form action="./api/edit.php" method="post" enctype="multipart/form-data">
 

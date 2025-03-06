@@ -111,6 +111,7 @@ $Admin=new db("admin");
 $Total=new db("total");
 $Bottom=new db("bottom");
 $Ad=new db("ad");
+$Mvim=new db("mvim");
 
 
 if(!isset($_SESSION['total'])){
