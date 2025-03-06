@@ -71,7 +71,7 @@ class DB{
             $keys=array_keys($array);
             $sql = " INSERT INTO $this->table(`".join("`,`",$keys)."`) values('".join("','",$array)."')";
         }
-        echo $sql;
+        // echo $sql;
         return $this->pdo->exec($sql);
     }
     function count(...$array){
@@ -110,6 +110,7 @@ $Title=new db("title");
 $Admin=new db("admin");
 $Total=new db("total");
 $Bottom=new db("bottom");
+$Ad=new db("ad");
 
 
 if(!isset($_SESSION['total'])){

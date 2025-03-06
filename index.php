@@ -1,5 +1,6 @@
 <?php
 include_once "./api/db.php";
+$row=$Title->find(['sh'=>1]);
 ?>
 
 <!DOCTYPE html
@@ -26,7 +27,7 @@ include_once "./api/db.php";
 
     <div id="main">
         <a title="" href="index.php">
-            <div class="ti" style="background:url('use/'); background-size:cover;"></div>
+            <div class="ti" style="background:url(./upload/<?=$row['img'];?>); background-size:cover;"></div>
             <!--標題-->
         </a>
         <div id="ms">
