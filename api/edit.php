@@ -29,7 +29,7 @@ if(isset($_POST['id'])){
         }
     }
 }
-to("../admin.php?do=$table");
+// to("../admin.php?do=$table");
 
 // Array
 // (

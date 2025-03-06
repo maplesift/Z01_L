@@ -38,7 +38,7 @@ $row=$Title->find(['sh'=>1]);
                 </div>
                 <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     <span class="t">進站總人數 :
-                        1 </span>
+                    <?=$Total->find(1)['total'];?> </span>
                 </div>
             </div>
             <!-- include -->
@@ -53,42 +53,38 @@ $row=$Title->find(['sh'=>1]);
 
             <div class="di di ad" style="height:540px; width:23%; padding:0px; margin-left:22px; float:left; ">
                 <!--右邊-->
-				<?php
+                <?php
                 // dd($_SESSION);
 				if(isset($_SESSION['user'])): ?>
-					 <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
+                <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
                     onclick="lo('admin.php')">進入管理</button>
-				
-				<?php else : ?>
-					<button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
+
+                <?php else : ?>
+                <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
                     onclick="lo('?do=login')">管理登入</button>
-				
-				<?php 
+
+                <?php 
 				endif ;
 				?>
 
-                <div style="width:89%; height:480px;" class="dbor">
+                <div style="width:89%; height:480px;" class="dbor cent">
                     <span class="t botli">校園映象區</span>
-                    <script>
-                    var nowpage = 0,
-                        num = 0;
+                    <!-- up -->
+                    <div class="cent" id=up onclick="pp(1)">
+                        <img src="./icon/up.jpg" alt="">
+                    </div>
+                    <?php
+                    $imgs=$Image->all(['sh'=>1]);
+                    foreach ($imgs as $idx=>$img) : ?>
+                    <div class="im" id=ssaa<?=$idx;?>>
+                            <img src="./upload/<?=$img['img'];?>" style="width: 150px;">
+                    </div>
+                   <?php endforeach ;?>
+                    <div class="cent" id=up onclick="pp(2)">
+                        <img src="./icon/dn.jpg" alt="">
+                    </div>
 
-                    function pp(x) {
-                        var s, t;
-                        if (x == 1 && nowpage - 1 >= 0) {
-                            nowpage--;
-                        }
-                        if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
-                            nowpage++;
-                        }
-                        $(".im").hide()
-                        for (s = 0; s <= 2; s++) {
-                            t = s * 1 + nowpage * 1;
-                            $("#ssaa" + t).show()
-                        }
-                    }
-                    pp(1)
-                    </script>
+
                 </div>
             </div>
         </div>
@@ -100,5 +96,25 @@ $row=$Title->find(['sh'=>1]);
     </div>
 
 </body>
+<script>
+var nowpage = 0,
+    num = 0;
+
+function pp(x) {
+    var s, t;
+    if (x == 1 && nowpage - 1 >= 0) {
+        nowpage--;
+    }
+    if (x == 2 && (nowpage + 1) * 3 <= num * 1 + 3) {
+        nowpage++;
+    }
+    $(".im").hide()
+    for (s = 0; s <= 2; s++) {
+        t = s * 1 + nowpage * 1;
+        $("#ssaa" + t).show()
+    }
+}
+pp(1)
+</script>
 
 </html>

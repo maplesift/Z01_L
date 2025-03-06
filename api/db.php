@@ -112,6 +112,7 @@ $Total=new db("total");
 $Bottom=new db("bottom");
 $Ad=new db("ad");
 $Mvim=new db("mvim");
+$Image=new db("image");
 
 
 if(!isset($_SESSION['total'])){

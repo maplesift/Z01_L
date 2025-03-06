@@ -1,13 +1,14 @@
 <div>
-    <form action="./api/edit_bottom.php" method="post">
-        <h2 class="cent">頁尾版權資料管理</h2>
+    <form action="./api/edit_total.php" method="post">
+        <h2 class="cent">進站總人數管理</h2>
         <hr>
         <table class="cent" style="width: 80%;">
             <tr class="yel">
                 <td>
-                    頁尾版權資料:
-                    <input type="text" name="text" value="<?=$Bottom->find(1)['text'];?>">
+                    進站總人數:
+                    <input type="text" name="total" value="<?=$Total->find(1)['total'];?>">
                 </td>
+
             </tr>
         </table>
         <div class="cent">
