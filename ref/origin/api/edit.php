@@ -46,7 +46,7 @@ if(isset($_POST['id'])){
                 //     $row['text']=$_POST['text'][$idx];
                 // }
             }
-            $$db->save($row); 
+            $$db->save($row);
         }
     }
 }

@@ -100,5 +100,13 @@ function to($url){
     header("location:".$url);
 }
 
-$User=new db("user");
-$Title=new db("title");
+$Admin=new db("admin");
+$Total=new db("total");
+$Bottom=new db("bottom");
+
+if(!isset($_SESSION['total'])){
+    $total=$Total->find(1);
+    $total['total']++;
+    $Total->save($total);
+    $_SESSION['total']=1;
+}

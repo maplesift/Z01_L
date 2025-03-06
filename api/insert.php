@@ -1,4 +1,5 @@
 <?php include_once "db.php";
+// dd($_POST);
 $table=$_POST['table'];
 $db=ucfirst($table);
 unset($_POST['table']);
