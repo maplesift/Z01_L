@@ -1,6 +1,6 @@
 <?php include_once "db.php";
 
-$chk=$User->find(['acc'=>$_POST['acc'],'pw'=>$_POST['pw']]);
+$chk=$Admin->find(['acc'=>$_POST['acc'],'pw'=>$_POST['pw']]);
 if($chk){
     $_SESSION['user']=1;
     to("../admin.php");
