@@ -180,3 +180,12 @@ button:focus {
 	background-position: initial initial;
 	background-repeat: initial initial;
 }
+.mw {
+	display: none;
+	position: absolute;
+	left: 170px;
+	top: 0px;
+	z-index: 99;
+	width: 100px;
+	height: 50px;
+}

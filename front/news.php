@@ -6,18 +6,21 @@
         <hr>
     </div>
     <!--正中央-->
-    <ul class="ssaa" style="list-style-type:decimal; margin-top:20px;">
+    <?php
+                    $total=$News->count();
+                    $div=5;
+                    $now=$_GET['p']??1;
+                    $pages=ceil($total/$div);
+                    // echo $pages;
+                    $start=($now-1)*$div;
+                    $news = $News->all(" limit $start,$div ");
+    ?>
+    <ol class="ssaa" style="list-style-type:decimal; margin-top:20px;"start="<?=$start+1;?>">
         <?php
-                $total=$News->count();
-                $div=5;
-                $now=$_GET['p']??1;
-                $pages=ceil($total/$div);
-                // echo $pages;
-                $start=($now-1)*$div;
-                $news = $News->all(" limit $start,$div ");
+
                 foreach ($news as $new) :
         ?>
-        <li style="margin-top:20px;">
+        <li style="margin-top:20px;" '>
             <?=mb_substr($new['text'],0,15); ?>
             <span class="all" style="display: none;">
                 <?=$new['text']; ?>
@@ -25,13 +28,13 @@
         </li>
 
         <?php endforeach; ?>
-    </ul>
+    </ol>
     <div id="alt">
 
-</div>
-<div class="cent">
+    </div>
+    <div class="cent">
 
-<?php
+        <?php
 if($now-1>0){
 echo "<a href='?do=news&p=".($now-1)."'> < </a>";
 }
@@ -43,7 +46,7 @@ if($now+1<=$pages){
 echo "<a href='?do=news&p=".($now+1)."'> > </a>";
 }
 ?>
-</div>
+    </div>
     <script>
     $(".ssaa li").hover(
         function() {

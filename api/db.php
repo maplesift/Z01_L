@@ -114,6 +114,7 @@ $Ad=new db("ad");
 $Mvim=new db("mvim");
 $Image=new db("image");
 $News=new db("news");
+$Menu=new db("menu");
 
 
 if(!isset($_SESSION['total'])){

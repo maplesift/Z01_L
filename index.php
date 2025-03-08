@@ -1,6 +1,7 @@
 <?php
 include_once "./api/db.php";
-$row=$Title->find(['sh'=>1]);
+// $title=$Title->find(['sh'=>1]);
+$menus=$Menu->all(['main_id'=>0]);
 ?>
 
 <!DOCTYPE html
@@ -27,7 +28,7 @@ $row=$Title->find(['sh'=>1]);
 
     <div id="main">
         <a title="" href="index.php">
-            <div class="ti" style="background:url(./upload/<?=$row['img'];?>); background-size:cover;"></div>
+            <div class="ti" style="background:url(./upload/<?=$Title->find(['sh'=>1])['img'];?>); background-size:cover;"></div>
             <!--標題-->
         </a>
         <div id="ms">
@@ -35,6 +36,28 @@ $row=$Title->find(['sh'=>1]);
                 <div id="menuput" class="dbor">
                     <!--主選單放此-->
                     <span class="t botli">主選單區</span>
+                        <?php 
+                        foreach ($menus as $menu) :
+                        ?>
+                    <div class="mainmu cent">
+                        <a href="<?=$menu['link'];?>">
+                        <?=$menu['text'];?>
+                        </a>
+                        <div class="mw">
+                            <?php
+                            $subs=$Menu->all(['main_id'=>$menu['id']]);
+                            foreach ($subs as $sub) :
+                            ?>
+                            <div class="mainmu2 cent">
+                                <a href="<?=$sub['link']?>">
+                                <?=$sub['text']?>
+                                </a>
+                            </div>
+
+                            <?php endforeach;?>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     <span class="t">進站總人數 :
