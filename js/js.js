@@ -45,3 +45,6 @@ $(".sswww").mouseout(
 		$("#alt").hide()
 	}
 )
+
+// alert('帳號或密碼錯誤')
+// location.href='index.php?do=login'

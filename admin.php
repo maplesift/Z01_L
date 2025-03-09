@@ -1,11 +1,13 @@
-﻿<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0068)?do=admin&redo=title -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<?php 
+include_once "./api/db.php";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>卓越科技大學校園資訊系統</title>
     <link href="./css/css.css" rel="stylesheet" type="text/css">
     <script src="./js/jquery-3.4.1.min.js"></script>
@@ -20,7 +22,7 @@
         </div>
     </div>
     <div id="main">
-        <a title="" href="?">
+        <a title="" href="index.php">
             <div class="ti" style="background:url('use/'); background-size:cover;"></div>
             <!--標題-->
         </a>
@@ -87,33 +89,16 @@
                         </tr>
                     </tbody>
                 </table>
-                <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-                    <p class="t cent botli">網站標題管理</p>
-                    <form method="post" target="back" action="?do=tii">
-                        <table width="100%">
-                            <tbody>
-                                <tr class="yel">
-                                    <td width="45%">網站標題</td>
-                                    <td width="23%">替代文字</td>
-                                    <td width="7%">顯示</td>
-                                    <td width="7%">刪除</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table style="margin-top:40px; width:70%;">
-                            <tbody>
-                                <tr>
-                                    <td width="200px"><input type="button"
-                                            onclick="op('#cover','#cvr','view.php?do=title')" value="新增網站標題圖片"></td>
-                                    <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </form>
-                </div>
+<!-- include -->
+	<?php
+		$do=$_GET['do']??'title';
+		$file="./back/$do.php";
+		if(file_exists($file)){
+		include $file;
+		}else{
+		include "./back/title.php";
+		}
+	?>
             </div>
             <div id="alt"
                 style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;">
@@ -128,5 +113,7 @@
     </div>
 
 </body>
+<script>
 
+</script>
 </html>

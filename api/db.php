@@ -1,5 +1,5 @@
 <?php
-session_start();
+// session_start();
 
 class db{
     protected $table;
@@ -39,7 +39,7 @@ class db{
     function find($id){
         $sql = " SELECT * FROM $this->table ";
         if(is_array($id)){
-            $where= $this->a2s($id[0]);
+            $where= $this->a2s($id);
             $sql .= " where ".join(" && ",$where); 
         }else{
             $sql .= " where `id`='$id' "; 
@@ -115,7 +115,7 @@ $Image=new db("image");
 $News=new db("news");
 $Menu=new db("menu");
 
-if(isset($_SESSION['total'])){
+if(!isset($_SESSION['total'])){
         $chk=$Total->find(1);
         $chk['total']++;
         $Total->save($chk);
