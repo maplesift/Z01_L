@@ -23,7 +23,7 @@ include_once "./api/db.php";
     </div>
     <div id="main">
         <a title="" href="index.php">
-            <div class="ti" style="background:url('use/'); background-size:cover;"></div>
+            <div class="ti" style="background:url('./upload/<?=$Title->find(['sh'=>1])['img'];?>'); background-size:cover;"></div>
             <!--標題-->
         </a>
         <div id="ms">
@@ -84,19 +84,19 @@ include_once "./api/db.php";
                             <td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;"
                                 class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a>
                             </td>
-                            <td><button onclick="document.cookie='user=';location.replace('?')"
+                            <td><button onclick="location.href='./api/logout.php'"
                                     style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
                         </tr>
                     </tbody>
                 </table>
 <!-- include -->
 	<?php
-		$do=$_GET['do']??'title';
+		$do=$_GET['do']??'admin';
 		$file="./back/$do.php";
 		if(file_exists($file)){
 		include $file;
 		}else{
-		include "./back/title.php";
+		include "./back/admin.php";
 		}
 	?>
             </div>

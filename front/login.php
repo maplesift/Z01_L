@@ -4,7 +4,7 @@
     </marquee>
     <div style="height:32px; display:block;"></div>
     <!--正中央-->
-    <form method="post" action="./api/admin.php">
+    <form method="post" action="./api/login.php">
         <p class="t botli">管理員登入區</p>
         <p class="cent">帳號 ： <input name="acc"  type="text"></p>
         <p class="cent">密碼 ： <input name="pw" type="password"></p>

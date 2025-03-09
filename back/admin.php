@@ -1,11 +1,11 @@
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli">管理者帳號管理</p>
-    <form method="post" action="./api/insert.php" >
+    <form method="post" action="./api/edit.php" >
         <table width="100%">
             <tbody>
                 <tr class="yel">
-                    <td width="40%">帳號</td>
-                    <td width="40%">密碼</td>
+                    <td width="30%">帳號</td>
+                    <td width="30%">密碼</td>
                     <td width="7%">刪除</td>
                     <!-- <td width="7%">刪除</td> -->
                     <!-- <td></td> -->
@@ -16,14 +16,16 @@
                                 ?>
                 <?php foreach ($rows as $row) :?>
                 <tr class="">
-                    <td width="40%">
+                    <td width="30%">
                         <input type="text" name="acc[]" value="<?=$row['acc'];?>">
 
                     </td>
-                    <td width="40%">
+                    <td width="30%">
                         <input type="password" name="pw[]" value="<?=$row['pw'];?>">
                     </td>
-                    <td width="7%"><input type="checkbox" name="del[]"></td>
+                    <td width="7%">
+                        <input type="checkbox" name="del[]" value="<?=$row['id'];?>">
+                    </td>
                     <input type="hidden" name="id[]" value="<?=$row['id'];?>">
                 </tr>
                 <?php endforeach ;?>
