@@ -3,7 +3,7 @@
 $chk=$Admin->find(['acc'=>$_POST['acc'],'pw'=>$_POST['pw']]);
 
 if($chk){
-    to("../admin.php");
+    to("../admin.php?do=title");
     $_SESSION['user']=1;
 
 }else{

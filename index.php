@@ -33,6 +33,27 @@ include_once "./api/db.php";
                 <div id="menuput" class="dbor">
                     <!--主選單放此-->
                     <span class="t botli">主選單區</span>
+                    <?php
+                    $mains=$Menu->all(['sh'=>1,'main_id'=>0]);
+                    foreach ($mains as $main) :
+                    ?>
+                    <div class="cent mainmu">
+                        <a href="<?=$main['link'];?>">
+                            <?=$main['text']; ?>
+                        </a>
+                        <?php
+                        $subs=$Menu->all(['main_id'=>$main['id']]);
+                        foreach ($subs as $sub) :
+                        ?>
+                        <div class="mainmu2 mw cent">
+                            <a href="<?=$sub['link'];?>">
+                                <?=$sub['text'];?>
+                            
+                            </a>
+                        </div>
+                        <?php endforeach;?>
+                    </div>
+                    <?php endforeach;?>
                 </div>
                 <div class="dbor" style="margin:3px; width:95%; height:20%; line-height:100px;">
                     <span class="t">進站總人數 :

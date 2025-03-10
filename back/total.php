@@ -17,7 +17,7 @@
                         
                     </td>
                     <td>
-                    <input type="text" name="text[]" value="<?=$row['total'];?>">
+                    <input type="text" name="text" value="<?=$row['total'];?>">
                     </td>
                     <!-- <td width="7%">顯示</td>
                     <td width="7%">刪除</td>

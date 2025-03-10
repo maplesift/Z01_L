@@ -18,7 +18,7 @@
                         
                     </td>
                     <td>
-                    <input type="text" name="text[]" value="<?=$row['text'];?>">
+                    <input type="text" name="text" value="<?=$row['text'];?>">
                     </td>
                     <!-- <td width="7%">顯示</td>
                     <td width="7%">刪除</td>
