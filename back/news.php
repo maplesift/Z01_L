@@ -1,3 +1,10 @@
+<style>
+    .t-area{
+        width: 350px;
+        height: 100px;
+    }
+</style>
+
 <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
     <p class="t cent botli">最新消息資料管理</p>
 
@@ -15,7 +22,14 @@
                 $table=$_GET['do'];
                 $db=ucfirst($table);
                 // echo $$db;
-                $rows=$$db->all(); 
+                $total=$$db->count();
+                $div=5;
+                $now=$_GET['p']??1;
+                $pages=ceil($total/$div);
+                $start=($now-1)*$div;
+
+
+                $rows=$$db->all(" limit $start,$div "); 
                 ?>
                 <?php 
                 foreach ($rows as $row) :
@@ -24,7 +38,10 @@
 
                     <!-- 文字區 -->
                     <td width="35%">
-                        <input type="text" name="text[]" value="<?=$row['text'];?>">
+                        <textarea name="text[]" id="" class="t-area">
+                        <?=$row['text'];?>
+                        </textarea>
+                        <!-- <input type="text" name="text[]" > -->
                        
                     </td>
                     <!-- 顯示 -->
@@ -44,6 +61,21 @@
                 ?>
             </tbody>
         </table>
+        <div class="cent">
+
+            <?php
+            if($now-1>0){
+                echo "<a href='?do=table&p=".($now-1)."'> < </a>";
+            }
+            for ($i=1; $i<=$pages; $i++) { 
+                $size=($now==$i)?'26px':'18px';
+                echo "<a href='?do=table&p=$i' style='font-size: $size;'> $i </a>";
+            }
+            if($now+1<=$pages){
+                echo "<a href='?do=table&p=".($now+1)."'> > </a>";
+            }
+            ?>
+            </div>
         <table style="margin-top:40px; width:70%;">
             <tbody>
                 <tr>

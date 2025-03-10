@@ -61,8 +61,22 @@ include_once "./api/db.php";
                 <button style="width:100%; margin-left:auto; margin-right:auto; margin-top:2px; height:50px;"
                  onclick="lo('?do=login')">管理登入</button>
                 <?php endif; ?>
-                <div style="width:89%; height:480px;" class="dbor">
+                <div style="width:89%; height:480px;" class="dbor cent">
                     <span class="t botli">校園映象區</span>
+                    <div class="cent">
+                        <img src="./icon/up.jpg" onclick="pp(1)">
+
+                    </div>
+                    <?php  
+                    $images=$Image->all(['sh'=>1]);
+                    foreach ($images as $idx => $img) :
+                    ?>
+                    <img src="./upload/<?=$img['img'];?>" class="im" id=ssaa<?=$idx?> style="width: 150px;height:100px;">
+                    <?php endforeach;?>
+                    <div class="cent">
+                        <img src="./icon/dn.jpg" onclick="pp(2)">
+
+                    </div>
                     <script>
                     var nowpage = 0,
                         num = 0;
