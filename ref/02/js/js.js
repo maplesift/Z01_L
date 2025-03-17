@@ -13,6 +13,7 @@ $(document).ready(function(e) {
 		}
 	)
 });
+
 function lo(x)
 {
 	location.replace(x)
@@ -29,3 +30,21 @@ function cl(x)
 {
 	$(x).fadeOut();
 }
+
+
+$(".sswww").hover(
+	function () {
+		$("#alt").html("" + $(this).children(".all").html() + "").css({ "top": $(this).offset().top - 50 })
+		$("#alt").show()
+	},function(){
+		
+	}
+)
+$(".sswww").mouseout(
+	function () {
+		$("#alt").hide()
+	}
+)
+
+// alert('帳號或密碼錯誤')
+// location.href='index.php?do=login'

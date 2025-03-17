@@ -1,11 +1,13 @@
-﻿<!DOCTYPE html
-    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<!-- saved from url=(0068)?do=admin&redo=title -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<?php 
+include_once "./api/db.php";
+?>
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>卓越科技大學校園資訊系統</title>
     <link href="./css/css.css" rel="stylesheet" type="text/css">
     <script src="./js/jquery-3.4.1.min.js"></script>
@@ -13,16 +15,15 @@
 </head>
 
 <body>
-    <div id="cover" style="display:none; ">
+    <div id="cover" style="display:none; "> '
         <div id="coverr">
             <a style="position:absolute; right:3px; top:4px; cursor:pointer; z-index:9999;" onclick="cl('#cover')">X</a>
             <div id="cvr" style="position:absolute; width:99%; height:100%; margin:auto; z-index:9898;"></div>
         </div>
     </div>
-    <iframe style="display:none;" name="back" id="back"></iframe>
     <div id="main">
-        <a title="" href="?">
-            <div class="ti" style="background:url('use/'); background-size:cover;"></div>
+        <a title="" href="index.php">
+            <div class="ti" style="background:url('./upload/<?=$Title->find(['sh'=>1])['img'];?>'); background-size:cover;"></div>
             <!--標題-->
         </a>
         <div id="ms">
@@ -30,40 +31,39 @@
                 <div id="menuput" class="dbor">
                     <!--主選單放此-->
                     <span class="t botli">後台管理選單</span>
-                    <a style="color:#000; font-size:13px; text-decoration:none;"
-                        href="./Management page_files/Management page.htm">
+                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=title">
                         <div class="mainmu">
                             網站標題管理 </div>
                     </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=ad">
+                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=ad">
                         <div class="mainmu">
                             動態文字廣告管理 </div>
                     </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=mvim">
+                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=mvim">
                         <div class="mainmu">
                             動畫圖片管理 </div>
                     </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=image">
+                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=image">
                         <div class="mainmu">
                             校園映象資料管理 </div>
                     </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=total">
+                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=total">
                         <div class="mainmu">
                             進站總人數管理 </div>
                     </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=bottom">
+                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=bottom">
                         <div class="mainmu">
                             頁尾版權資料管理 </div>
                     </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=news">
+                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=news">
                         <div class="mainmu">
                             最新消息資料管理 </div>
                     </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=admin">
+                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin">
                         <div class="mainmu">
                             管理者帳號管理 </div>
                     </a>
-                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=admin&redo=menu">
+                    <a style="color:#000; font-size:13px; text-decoration:none;" href="?do=menu">
                         <div class="mainmu">
                             選單管理 </div>
                     </a>
@@ -84,57 +84,26 @@
                             <td style="width:70%;font-weight:800; border:#333 1px solid; border-radius:3px;"
                                 class="cent"><a href="?do=admin" style="color:#000; text-decoration:none;">後台管理區</a>
                             </td>
-                            <td><button onclick="document.cookie='user=';location.replace('?')"
+                            <td><button onclick="location.href='./api/logout.php'"
                                     style="width:99%; margin-right:2px; height:50px;">管理登出</button></td>
                         </tr>
                     </tbody>
                 </table>
-                <div style="width:99%; height:87%; margin:auto; overflow:auto; border:#666 1px solid;">
-                    <p class="t cent botli">網站標題管理</p>
-                    <form method="post" target="back" action="?do=tii">
-                        <table width="100%">
-                            <tbody>
-                                <tr class="yel">
-                                    <td width="45%">網站標題</td>
-                                    <td width="23%">替代文字</td>
-                                    <td width="7%">顯示</td>
-                                    <td width="7%">刪除</td>
-                                    <td></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table style="margin-top:40px; width:70%;">
-                            <tbody>
-                                <tr>
-                                    <td width="200px"><input type="button"
-                                            onclick="op('#cover','#cvr','view.php?do=title')" value="新增網站標題圖片"></td>
-                                    <td class="cent"><input type="submit" value="修改確定"><input type="reset" value="重置">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-
-                    </form>
-                </div>
+<!-- include -->
+	<?php
+		$do=$_GET['do']??'admin';
+		$file="./back/$do.php";
+		if(file_exists($file)){
+		include $file;
+		}else{
+		include "./back/admin.php";
+		}
+	?>
             </div>
             <div id="alt"
                 style="position: absolute; width: 350px; min-height: 100px; word-break:break-all; text-align:justify;  background-color: rgb(255, 255, 204); top: 50px; left: 400px; z-index: 99; display: none; padding: 5px; border: 3px double rgb(255, 153, 0); background-position: initial initial; background-repeat: initial initial;">
             </div>
-            <script>
-            $(".sswww").hover(
-                function() {
-                    $("#alt").html("" + $(this).children(".all").html() + "").css({
-                        "top": $(this).offset().top - 50
-                    })
-                    $("#alt").show()
-                }
-            )
-            $(".sswww").mouseout(
-                function() {
-                    $("#alt").hide()
-                }
-            )
-            </script>
+
         </div>
         <div style="clear:both;"></div>
         <div
@@ -144,5 +113,7 @@
     </div>
 
 </body>
+<script>
 
+</script>
 </html>
