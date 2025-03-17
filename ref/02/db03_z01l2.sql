@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- 主機： 127.0.0.1
--- 產生時間： 2025-03-10 09:25:27
+-- 產生時間： 2025-03-10 16:04:08
 -- 伺服器版本： 10.4.32-MariaDB
 -- PHP 版本： 8.2.12
 
@@ -78,7 +78,7 @@ CREATE TABLE `bottom` (
 --
 
 INSERT INTO `bottom` (`id`, `text`) VALUES
-(1, '20250310頁尾版權');
+(1, '20250310頁尾版權1');
 
 -- --------------------------------------------------------
 
@@ -112,10 +112,20 @@ INSERT INTO `image` (`id`, `text`, `img`, `sh`) VALUES
 CREATE TABLE `menu` (
   `id` int(11) NOT NULL,
   `text` text NOT NULL,
-  `img` text NOT NULL,
+  `link` text NOT NULL,
   `sh` int(1) NOT NULL DEFAULT 1,
   `main_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- 傾印資料表的資料 `menu`
+--
+
+INSERT INTO `menu` (`id`, `text`, `link`, `sh`, `main_id`) VALUES
+(1, '管理登入', 'index.php?do=login', 1, 0),
+(2, '網站首頁', 'index.php', 1, 0),
+(4, 'test', 'index.php?do=login', 1, 1),
+(5, 'h', '123', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -204,7 +214,7 @@ CREATE TABLE `total` (
 --
 
 INSERT INTO `total` (`id`, `total`) VALUES
-(1, 64);
+(1, 11);
 
 --
 -- 已傾印資料表的索引
@@ -296,7 +306,7 @@ ALTER TABLE `image`
 -- 使用資料表自動遞增(AUTO_INCREMENT) `menu`
 --
 ALTER TABLE `menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- 使用資料表自動遞增(AUTO_INCREMENT) `mvim`
